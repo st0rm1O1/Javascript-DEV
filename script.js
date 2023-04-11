@@ -7,16 +7,19 @@ function calculateFunction() {
     if (get_selected_value_from_radio_group != null) {
         switch(get_selected_value_from_radio_group.value) {
             case "add":
-                results_h1_tag.innerHTML = "Results - " + num1 + " + " + num2 + " = " + (num1+num2);
+                results_h1_tag.innerHTML = "Results -> " + num1 + " + " + num2 + " = " + (num1+num2);
                 break;
             case "sub":
-                results_h1_tag.innerHTML = "Results - " + num1 + " - " + num2 + " = " + (num1-num2);
+                results_h1_tag.innerHTML = "Results -> " + num1 + " - " + num2 + " = " + (num1-num2);
                 break;
             case "mul":
                 results_h1_tag.innerHTML = "Results - " + num1 + " x " + num2 + " = " + (num1*num2);
                 break;
             case "div":
-                results_h1_tag.innerHTML = "Results - " + num1 + " ÷ " + num2 + " = " + (num1/num2);
+                if (num2 == 0)
+                    results_h1_tag.innerHTML = "Results - " + num1 + " ÷ " + num2 + " = " + (num1/num2) + "\nNumber cannot be divisible by 0.";
+                else
+                    results_h1_tag.innerHTML = "Results - " + num1 + " ÷ " + num2 + " = " + (num1/num2);
                 break;
         }
     
