@@ -7,4 +7,5 @@ This project is a collaborative effort among a group of individuals to explore t
 
 ## Contributors
 - [@alien](https://www.github.com/todo-do)
+- [@surya](https://www.github.com/SuryaMenon0809)
 
