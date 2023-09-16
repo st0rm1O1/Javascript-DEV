@@ -6,7 +6,7 @@ const HttpMethod = {
 };
 
 const BASE_URL = {
-    LOCAL: `http://localhost:8888`,
+    LOCAL: `http://localhost:1000`,
     ROUTER: `http://sprk.ddns.net:8888`,
     NGROK: `https://mollusk-heroic-jaguar.ngrok-free.app`,
     AWS: `https://sprk.swapnilkhedekar.com`
