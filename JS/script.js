@@ -6,7 +6,7 @@ const HttpMethod = {
 };
 
 const BASE_URL = {
-    LOCAL: `http://localhost:8888`,
+    LOCAL: `http://localhost:1001`,
     ROUTER: `http://sprk.ddns.net:8888`,
     NGROK: `https://mollusk-heroic-jaguar.ngrok-free.app`,
     AWS: `https://sprk.swapnilkhedekar.com`
@@ -14,7 +14,8 @@ const BASE_URL = {
 
 const TOKEN = {
     Admin: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwidXB0IjoxNjkzNzM3NjU1MTM4LCJpYXQiOjE2OTM4OTk4NDEsImV4cCI6MTY5Mzk4NjI0MX0.aNO0SIOj8Fibp72dsvN3uMAxFbeIOQX8GMqcsWYNTiDZT7uEIq7eHuWAef0FrRtVZbvnD15i-vID_PXShdtpIw`,
-    Sales: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwidXB0IjoxNjg3MDA0OTE2NzgyLCJpYXQiOjE2OTM3NTA5NTMsImV4cCI6MTY5MzgzNzM1M30.VPmklR8wkqpTy0HBRUaCrkCnhFUbND3GcB1G4PwwCKurFOZSTC8lrmSYv-9ShgXVEeVxV1-TlX68pZmXUDvFTg`
+    Sales: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwidXB0IjoxNjg3MDA0OTE2NzgyLCJpYXQiOjE2OTM3NTA5NTMsImV4cCI6MTY5MzgzNzM1M30.VPmklR8wkqpTy0HBRUaCrkCnhFUbND3GcB1G4PwwCKurFOZSTC8lrmSYv-9ShgXVEeVxV1-TlX68pZmXUDvFTg`,
+    Faculty: `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwidXB0IjoxNjg3MDA0OTE2NzgyLCJpYXQiOjE2OTM3NTA5NTMsImV4cCI6MTY5MzgzNzM1M30.VPmklR8wkqpTy0HBRUaCrkCnhFUbND3GcB1G4PwwCKurFOZSTC8lrmSYv-9ShgXVEeVxV1-TlX68pZmXUDvFTg`
 }
 
 const CURRENT_BASE_URL = BASE_URL.NGROK;
