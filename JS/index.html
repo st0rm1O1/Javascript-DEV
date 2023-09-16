@@ -8,31 +8,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <title>HOME</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <title>CORS</title>
 </head>
 
 <!-- BODY TAG -->
 <body>
     <h1>HALO, st0rm!</h1>
-    <p>To use this calculator, enter two numbers into the fields below and select the desired operation (addition, subtraction, multiplication, or division).</p>
+    <p>Cross Origin Resource Sharing.</p>
     <hr>
-    <input type="text" id="num1" name="num1" placeholder="Number-1">
-    <input type="text" id="num2" name="num2" placeholder="Number-2"><br>
+    <img id="profil_picture" alt="Profile" style="width: 150px; height: 150px; border-radius: 50%; margin: 20px; object-fit: cover; object-position: center right;" />
     <hr>
-    <input type="radio" name="ORG" id="addition" value="add"> (+) Addition
-    <input type="radio" name="ORG" id="subtraction" value="sub"> (-) Subtraction
-    <input type="radio" name="ORG" id="multiplication" value="mul"> (x) Multiplication
-    <input type="radio" name="ORG" id="division" value="div"> (÷) Division 
+    <input type="file" id="imageInput" accept="image/*">
     <hr>
-    <button onclick="calculateFunction()">Calculate</button>
-    <h1 style="display: none;" id="results">Results</h1>
-
+    <button onclick="setProfilePicture()">Update Profile</button>
+    <!-- <button id="generateQRBTN">Generate QR Code</button>
+    <hr>
+    <div id="qrCodeContainer"></div> -->
 </body>
-
-
 
 <pre>
     <!-- SCRIPT TAG -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </pre>
 
