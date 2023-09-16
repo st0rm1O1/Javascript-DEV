@@ -101,7 +101,7 @@ const CURRENT_USER_TOKEN = TOKEN.Admin;
 // });
 
 
-/*
+
 function calculateUniqueCourseFeesWithDiscount(jsonData, courseGroupIds, paymentType, isDiscountedValue) {
     const uniqueCourseIds = new Set();
     let totalFeesSum = 0;
@@ -333,7 +333,7 @@ const paymentType = 'INSTALLMENT'; // Specify payment type: 'LUMPSUM' or 'INSTAL
 
 const result = calculateUniqueCourseFeesWithDiscount(jsonData, courseGroupIds, paymentType, true);
 console.log(result); // This will print the total discounted course fees for unique courses based on payment type
-*/
+
 
 
 function getProfilePicture() {
