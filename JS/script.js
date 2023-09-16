@@ -18,7 +18,7 @@ const TOKEN = {
 }
 
 const CURRENT_BASE_URL = BASE_URL.NGROK;
-const CURRENT_USER_TOKEN = TOKEN.Admin;
+const CURRENT_USER_TOKEN = TOKEN.Sales;
 
 
 // const getData = async () => {
