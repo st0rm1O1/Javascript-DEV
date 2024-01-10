@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON Editor</title>
+    </head>
+<body>
+    <form id="jsonForm">
+        <div id="checkboxContainer"></div>
+    </form>
+    <pre id="jsonContainer"></pre>
+</body>
+
+<script>
+
+    const jsonStructure = 
+    [
+    {
+        name: "LMS",
+        sub: [
+        {
+            name: "LEADS",
+            actions: ["CREATE", "VIEW", "DELETE"],
+        },
+        ],
+    },
+    {
+        name: "CENTER",
+        sub: [
+        {
+            name: "ENROLLMENTS",
+            actions: ["CREATE", "VIEW"],
+        },
+        {
+            name: "RBC",
+            actions: ["CREATE", "VIEW"],
+        },
+        {
+            name: "COLLECTIONS",
+            actions: ["CREATE", "VIEW"],
+        },
+        {
+            name: "BOOKINGS",
+            actions: ["CREATE", "VIEW"],
+        },
+        ],
+    },
+    {
+        name: "EMS",
+        sub: [
+        {
+            name: "EMPLOYEES",
+            actions: ["CREATE", "VIEW"],
+        },
+        {
+            name: "REQUESTS",
+            actions: ["CREATE", "VIEW"],
+        },
+        {
+            name: "FACULTY_EXAM",
+            actions: ["CREATE", "VIEW"],
+        },
+        {
+            name: "ACTIVITIES",
+            actions: ["CREATE", "VIEW"],
+        },
+        ],
+    },
+    ];
+
+
+    function generateCheckboxes(json, container) {
+        json.forEach(category => {
+            const categoryFieldset = document.createElement('fieldset');
+            categoryFieldset.innerHTML = `<legend><input type="checkbox" name="${category.name}_legend"> ${category.name}</legend>`;
+
+            category.sub.forEach(subCategory => {
+                const subCategoryFieldset = document.createElement('fieldset');
+                subCategoryFieldset.innerHTML = `<legend><input type="checkbox" name="${category.name}_${subCategory.name}_legend"> ${subCategory.name}</legend>`;
+
+                subCategory.actions.forEach(action => {
+                    const checkboxLabel = `${category.name}_${subCategory.name}_${action}`;
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.name = checkboxLabel;
+                    checkbox.id = checkboxLabel;
+
+                    const label = document.createElement('label');
+                    label.htmlFor = checkboxLabel;
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(` ${action}`));
+
+                    subCategoryFieldset.appendChild(label);
+                });
+
+                categoryFieldset.appendChild(subCategoryFieldset);
+            });
+
+            container.appendChild(categoryFieldset);
+        });
+
+        container.addEventListener('change', function (event) {
+            const target = event.target;
+            if (target.type === 'checkbox') {
+                const isChecked = target.checked;
+                const nameParts = target.name.split('_');
+                const categoryName = nameParts[0];
+                const subCategoryName = nameParts[1];
+                const actionName = nameParts[2];
+                if (target.name.endsWith('_legend')) {
+                    if (nameParts.length < 3)
+                        toggleCheckboxes(container, `fieldset legend input[name="${categoryName}_legend"]`, isChecked);
+                    else
+                        toggleCheckboxes(container, `fieldset legend input[name="${categoryName}_${subCategoryName}_legend"]`, isChecked);
+                } 
+                else
+                    toggleCheckboxes(container, `fieldset legend input[name="${categoryName}_${subCategoryName}_${actionName}"]`, isChecked);
+                
+                generateJSON();
+            } 
+        });
+    }
+
+    function toggleCheckboxes(container, selector, isChecked) {
+        const elementsToToggle = container.querySelectorAll(selector);
+        const atLeastOneChecked = false;
+        elementsToToggle.forEach(element => {
+            const parentLegendCheckbox = element.parentNode.parentNode.parentNode.querySelector('input[type="checkbox"]');
+            if (parentLegendCheckbox)
+                parentLegendCheckbox.checked = isChecked;
+
+            element.closest('fieldset').querySelectorAll('input[type="checkbox"]').forEach(actionCheckbox => {
+                actionCheckbox.checked = isChecked;
+            });
+        });
+    }
+
+
+
+    const checkboxContainer = document.getElementById("checkboxContainer");
+    generateCheckboxes(jsonStructure, checkboxContainer);
+
+
+
+
+
+    function generateJSON() {
+        let json = [];
+        document
+            .querySelectorAll('input[type="checkbox"]:checked')
+            .forEach((checkbox) => {
+                if (checkbox.name.endsWith('_legend')) return;
+                const [categoryName, subCategoryName, action] = checkbox.name.split("_");
+
+                let category = json.find((item) => item.name === categoryName);
+                if (!category) {
+                    category = { name: categoryName, sub: [] };
+                    json.push(category);
+                }
+
+                let subCategory = category.sub.find((item) => item.name === subCategoryName);
+                if (!subCategory) {
+                    subCategory = { name: subCategoryName, actions: [] };
+                    category.sub.push(subCategory);
+                }
+
+                subCategory.actions.push(action);
+            });
+
+        document.getElementById("jsonContainer").textContent = JSON.stringify(json, null, 2);
+    }
+
+
+
+    </script>
+</html>
